@@ -4,7 +4,7 @@ Download weather data from various weather stations.
 author: Steffen Pentelow
 date: 2021-02-18
 
-Usage: python src/data_download_sap.py
+Usage: python src/data_download_weather.py
 """
 
 import os
