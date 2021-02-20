@@ -295,7 +295,7 @@ def get_weekly_data(normalized_data,location=["all"],tree="all", tap_id="all", y
             df_year["jd_to"] = df_year["jd"]
             df_year = df_year.drop(columns=["date", "jd", "record_id"])
 
-            weekly_df = weekly_df.append(df_year)
+            weekly_df = weekly_df.append(df_year[6:])
 
     return weekly_df
 
