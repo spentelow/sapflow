@@ -20,7 +20,7 @@ import copy
 import os
 from docopt import docopt
 
-opt = docopt(__doc__)
+# opt = docopt(__doc__)
 
 def main(opt):
     loc = opt['--location']
@@ -268,26 +268,16 @@ def get_weekly_data(normalized_data,location=["all"],tree="all", tap_id="all", y
             df_year["tree"] = df_year.tree.fillna(value=df_year.tree[0])
             df_year["year"] = pd.DatetimeIndex(df_year["date"]).year
             df_year["jd"] = pd.DatetimeIndex(df_year["date"]).dayofyear
-
-            for day in df_year.index[6:]:
-                if df_year["date"].min() == (day - pd.to_timedelta(6, unit="D")):
-                    df_year.loc[day, "weekly_sap"] = df_year.loc[day]["cum_sap"]
-                    df_year.loc[day, "weekly_sugarwt"] = df_year.loc[day]["cum_sugarwt"]
-                else:
-                    df_year.loc[day, "weekly_sap"] = (
-                        df_year.loc[day]["cum_sap"]
-                        - df_year.loc[day - pd.to_timedelta(7, unit="D")]["cum_sap"]
-                    )
-                    df_year.loc[day, "weekly_sugarwt"] = (
-                        df_year.loc[day]["cum_sugarwt"]
-                        - df_year.loc[day - pd.to_timedelta(7, unit="D")]["cum_sugarwt"]
-                    )
-                    df_year.loc[day, "cum_syrupLitres"] = (
-                        df_year.loc[day, "cum_sugarwt"] / 1.33
-                    )
-                    df_year.loc[day, "weekly_syrupLitres"] = (
-                        df_year.loc[day, "weekly_sugarwt"] / 1.33
-                    )
+            
+            if df_year.shape[0] > 7:
+                df_year['weekly_sap'] = df_year.loc[:,'cum_sap'].to_numpy() - np.concatenate((np.zeros(7), df_year.iloc[:-7]['cum_sap'].to_numpy()),axis=0)
+                df_year['weekly_sugarwt'] = df_year.loc[:,'cum_sugarwt'].to_numpy() - np.concatenate((np.zeros(7), df_year.iloc[:-7]['cum_sugarwt'].to_numpy()),axis=0)
+            else:
+                df_year['weekly_sap'] = df_year['cum_sap']
+                df_year['weekly_sugarwt'] = df_year['cum_sugarwt']
+                
+            df_year["cum_syrupLitres"] = df_year["cum_sugarwt"] / 1.33
+            df_year["weekly_syrupLitres"] = df_year["weekly_sugarwt"] / 1.33
 
             df_year["date_from"] = df_year["date"] - pd.to_timedelta(6, unit="D")
             df_year["date_to"] = df_year["date"]
@@ -295,9 +285,10 @@ def get_weekly_data(normalized_data,location=["all"],tree="all", tap_id="all", y
             df_year["jd_to"] = df_year["jd"]
             df_year = df_year.drop(columns=["date", "jd", "record_id"])
 
-            weekly_df = weekly_df.append(df_year[6:])
+            weekly_df = weekly_df.append(df_year)
 
     return weekly_df
 
 if __name__ == "__main__":
+    opt = docopt(__doc__)
     main(opt)
