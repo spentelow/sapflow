@@ -22,33 +22,41 @@ from docopt import docopt
 
 # opt = docopt(__doc__)
 
+
 def main(opt):
-    loc = opt['--location']
-    tre = opt['--tree']
-    tp = opt['--tap']
-    yrs = opt['--years']
-    spec = opt['--species']
+    loc = opt["--location"]
+    tre = opt["--tree"]
+    tp = opt["--tap"]
+    yrs = opt["--years"]
+    spec = opt["--species"]
 
     processed_path = "data/processed/stinson2019/"
 
-    if not os.path.exists(processed_path + 'norm_tables'):
-        os.makedirs(processed_path + 'norm_tables')
+    if not os.path.exists(processed_path + "norm_tables"):
+        os.makedirs(processed_path + "norm_tables")
 
     # Load sap flow data
     stinson2019 = pd.read_pickle(processed_path + "stinson2019_df")
-    
-    data = add_ids(stinson2019) # Add unique record id column to dataframe
-    normalized_data = normalized_tables(data) # Move data to normalized tables
-    full_df = get_weekly_data(normalized_data, location=loc, tree=tre, tap_id=tp, years=yrs, species=spec) # Calculate weekly summary parameters
-    full_df = full_df.reset_index().merge(normalized_data['tree_site'], on='tree', how='left')
-    sap_sugar_df = full_df.loc[:,['date_from', 'date_to', 'weekly_sugarwt', 'weekly_sap','site']]
 
-    full_df.to_pickle(processed_path + 'full_weekly_summary')
-    sap_sugar_df.to_pickle(processed_path + 'sap_sugar_weekly_summary')
-    
+    data = add_ids(stinson2019)  # Add unique record id column to dataframe
+    normalized_data = normalized_tables(data)  # Move data to normalized tables
+    full_df = get_weekly_data(
+        normalized_data, location=loc, tree=tre, tap_id=tp, years=yrs, species=spec
+    )  # Calculate weekly summary parameters
+    full_df = full_df.reset_index().merge(
+        normalized_data["tree_site"], on="tree", how="left"
+    )
+    sap_sugar_df = full_df.loc[
+        :, ["date_from", "date_to", "weekly_sugarwt", "weekly_sap", "site"]
+    ]
+
+    full_df.to_pickle(processed_path + "full_weekly_summary")
+    sap_sugar_df.to_pickle(processed_path + "sap_sugar_weekly_summary")
+
     # Save normalized tables
     for table in normalized_data.keys():
-        normalized_data[table].to_pickle(processed_path + 'norm_tables/' + table)
+        normalized_data[table].to_pickle(processed_path + "norm_tables/" + table)
+
 
 def add_ids(data):
     """Add unique record ids for each entry in sap dataframe
@@ -63,13 +71,13 @@ def add_ids(data):
     DataFrame
         Dataframe same as input but with new column containing a
         unique record id for each entry of the form:
-        
+
         '<TreeID>_<TapID>_<RecordYear>_<ID#>'
 
-        where ID# is 0 for the first record for a given tap in <RecordYear>, 
+        where ID# is 0 for the first record for a given tap in <RecordYear>,
         1 is the second record of the year, etc.
     """
-    
+
     id_df = data.sort_values(["site_id", "tree", "tap", "date"])
 
     # Create unique record ids for each entry in the following form:
@@ -93,8 +101,9 @@ def add_ids(data):
         ]
 
     id_df["tap_id"] = id_df["tree"] + id_df["tap"]
-    
+
     return id_df
+
 
 def normalized_tables(data):
     """Create normalized tables from wide dataframe of sap measurements
@@ -123,12 +132,20 @@ def normalized_tables(data):
     df["tap_tree"] = data[["tap_id", "tree"]].drop_duplicates().set_index("tap_id")
     df["tree_species"] = data[["tree", "species"]].drop_duplicates().set_index("tree")
     df["tree_site"] = data[["tree", "site_id"]].drop_duplicates().set_index("tree")
-    df["tree_site"]["site_id"] = df['tree_site']["site_id"].str.upper()
-    df["tree_site"] = df["tree_site"].rename(columns = {'site_id':'site'})
+    df["tree_site"]["site_id"] = df["tree_site"]["site_id"].str.upper()
+    df["tree_site"] = df["tree_site"].rename(columns={"site_id": "site"})
 
     return df
 
-def get_weekly_data(normalized_data,location=["all"],tree="all", tap_id="all", years="all", species="ACSA",):
+
+def get_weekly_data(
+    normalized_data,
+    location=["all"],
+    tree="all",
+    tap_id="all",
+    years="all",
+    species="ACSA",
+):
     """Generate data table containing cumulative weekly sap and sugar amounts
 
     Parameters
@@ -152,16 +169,16 @@ def get_weekly_data(normalized_data,location=["all"],tree="all", tap_id="all", y
         Table with weekly summaries for all taps specified in arguments.  Includes
         cumulative sap and sugar weight, and weekly sap and sugar weight.
     """
-    
+
     # Unpack normalized DataFrames
-    tap_records = normalized_data['tap_records']
-    sap = normalized_data['sap']
-    sugar = normalized_data['sugar']
-    dates = normalized_data['dates']
-    tap_tree = normalized_data['tap_tree']
-    tree_species = normalized_data['tree_species']
-    site = normalized_data['tree_site']
-    
+    tap_records = normalized_data["tap_records"]
+    sap = normalized_data["sap"]
+    sugar = normalized_data["sugar"]
+    dates = normalized_data["dates"]
+    tap_tree = normalized_data["tap_tree"]
+    tree_species = normalized_data["tree_species"]
+    site = normalized_data["tree_site"]
+
     # Check and clean location argument
     if type(location) != list:
         location = [location]
@@ -279,14 +296,22 @@ def get_weekly_data(normalized_data,location=["all"],tree="all", tap_id="all", y
             df_year["tree"] = df_year.tree.fillna(value=df_year.tree[0])
             df_year["year"] = pd.DatetimeIndex(df_year["date"]).year
             df_year["jd"] = pd.DatetimeIndex(df_year["date"]).dayofyear
-            
+
             if df_year.shape[0] > 7:
-                df_year['weekly_sap'] = df_year.loc[:,'cum_sap'].to_numpy() - np.concatenate((np.zeros(7), df_year.iloc[:-7]['cum_sap'].to_numpy()),axis=0)
-                df_year['weekly_sugarwt'] = df_year.loc[:,'cum_sugarwt'].to_numpy() - np.concatenate((np.zeros(7), df_year.iloc[:-7]['cum_sugarwt'].to_numpy()),axis=0)
+                df_year["weekly_sap"] = df_year.loc[
+                    :, "cum_sap"
+                ].to_numpy() - np.concatenate(
+                    (np.zeros(7), df_year.iloc[:-7]["cum_sap"].to_numpy()), axis=0
+                )
+                df_year["weekly_sugarwt"] = df_year.loc[
+                    :, "cum_sugarwt"
+                ].to_numpy() - np.concatenate(
+                    (np.zeros(7), df_year.iloc[:-7]["cum_sugarwt"].to_numpy()), axis=0
+                )
             else:
-                df_year['weekly_sap'] = df_year['cum_sap']
-                df_year['weekly_sugarwt'] = df_year['cum_sugarwt']
-                
+                df_year["weekly_sap"] = df_year["cum_sap"]
+                df_year["weekly_sugarwt"] = df_year["cum_sugarwt"]
+
             df_year["cum_syrupLitres"] = df_year["cum_sugarwt"] / 1.33
             df_year["weekly_syrupLitres"] = df_year["weekly_sugarwt"] / 1.33
 
@@ -299,6 +324,7 @@ def get_weekly_data(normalized_data,location=["all"],tree="all", tap_id="all", y
             weekly_df = weekly_df.append(df_year)
 
     return weekly_df
+
 
 if __name__ == "__main__":
     opt = docopt(__doc__)
