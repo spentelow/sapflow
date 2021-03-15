@@ -76,7 +76,8 @@ def create_loc_table(location):
 
 def create_closest_stn_tbl():
     """Create table with data collection site and the station ID for the
-    closest NOAA station to that site.
+    closest NOAA station to that site.  This implementation requires manually
+    inputting the station ID closest to each data collection site.
 
     Returns
     -------
