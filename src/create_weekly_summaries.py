@@ -56,6 +56,8 @@ def main(opt):
     # Save normalized tables
     for table in normalized_data.keys():
         normalized_data[table].to_pickle(processed_path + "norm_tables/" + table)
+    
+    return
 
 
 def add_ids(data):

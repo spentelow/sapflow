@@ -18,6 +18,7 @@ def main():
         stinson2019()
         templer2020()
         rapp2016()
+    return
 
 def stinson2019():
     """Downloads all files from ScienceBase item number "5d67eacae4b0c4f70cf15be3"

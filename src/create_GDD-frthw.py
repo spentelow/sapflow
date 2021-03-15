@@ -41,6 +41,8 @@ def main(opt):
     gdd_frthw = pd.concat([gdd, frzthw.reset_index()["frthw"]], axis=1)
     gdd_frthw.to_pickle(processed_path + '/gdd_frthw')
 
+    return
+
 def get_gdd(data, stn_id, tbase, datetime="datetime", airtemp="airt"):
     """Calculate cumulative growing degree days (GDD) from weather station data
 
