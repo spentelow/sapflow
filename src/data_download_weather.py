@@ -11,7 +11,9 @@ import os
 import requests
 
 def main():
-        hf001()
+    hf001()
+
+    return
 
 def hf001():
     """ Downloads 15-min metric weather files from Fisher Meteorological Station at Harvard Forest since 2005
@@ -40,6 +42,8 @@ def hf001():
 
     with open(raw_path + '/HF_metadata.xml', 'w+') as metadata_file:
         metadata_file.write(metadata_xml.text)
+    
+    return
 
 if __name__ == "__main__":
     main()
