@@ -23,8 +23,8 @@ data/processed/stinson2019/stinson2019_df : src/data_download_sap.py
 data/processed/stinson2019/sap_sugar_weekly_summary : src/create_weekly_summaries.py data/processed/stinson2019/stinson2019_df
 	python src/create_weekly_summaries.py
 
-data/processed/HF_weather/gdd_frthw : src/create_GDD-frthw.py data/raw/HF_weather/hf001-08-hourly-m.csv
-	python src/create_GDD-frthw.py
+data/processed/HF_weather/gdd_frthw : src/create_GDD_frthw.py data/raw/HF_weather/hf001-08-hourly-m.csv
+	python src/create_GDD_frthw.py
 
 clean :
 	rm -rf data/raw
