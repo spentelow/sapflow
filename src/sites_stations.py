@@ -16,14 +16,14 @@ import pandas as pd
 
 def main():
 
-    processed_path = "data/processed/stinson2019/"
-    raw_path = "data/raw/stinson2019"
+    processed_path = "data/processed/stinson2019/norm_tables/"
+    raw_path = "data/raw/stinson2019/"
 
-    if not os.path.exists(processed_path + "norm_tables"):
-        os.makedirs(processed_path + "norm_tables")
+    if not os.path.exists(processed_path):
+        os.makedirs(processed_path)
 
     # Load location information data
-    location = pd.read_csv(raw_path + "/ACERnet_LatLon.csv")
+    location = pd.read_csv(raw_path + "ACERnet_LatLon.csv")
 
     location_table = create_loc_table(location)
     closest_weather_station = create_closest_stn_tbl()
@@ -129,12 +129,12 @@ def create_wstn_tables(raw_path, closest_weather_station):
 
     stn_history_file = "isd-history.txt"
 
-    if not os.path.exists(raw_path + "/NOAA"):
-        os.makedirs(raw_path + "/NOAA")
+    if not os.path.exists(raw_path + "NOAA"):
+        os.makedirs(raw_path + "NOAA")
 
     # Open the station history file and save it locally
     try:
-        with open(raw_path + "/NOAA/" + stn_history_file, "wb+") as stn_hist:
+        with open(raw_path + "NOAA/" + stn_history_file, "wb+") as stn_hist:
             noaa_ftp.retrbinary("RETR " + stn_history_file, stn_hist.write)
     except error_perm as e_message:
         print("Error generated from NOAA FTP site: \n", e_message)
@@ -158,7 +158,7 @@ def create_wstn_tables(raw_path, closest_weather_station):
     )
 
     # Parse station history file line by line
-    with open(raw_path + "/NOAA/" + stn_history_file, mode="rt") as stn_hist:
+    with open(raw_path + "NOAA/" + stn_history_file, mode="rt") as stn_hist:
         for line in stn_hist:
             stn = line[0:6] + "-" + line[7:12]
             if stn in weather_stn.index.tolist():
