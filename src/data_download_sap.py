@@ -9,15 +9,14 @@ Usage: python src/data_download_sap.py
 
 import sciencebasepy
 import os
-import numpy as np
 import pandas as pd
 import requests
-import json
+
 
 def main():
-        stinson2019()
-        templer2020()
-        rapp2016()
+    stinson2019()
+    templer2020()
+    rapp2016()
     return
 
 def stinson2019():
@@ -33,8 +32,8 @@ def stinson2019():
 
 
     sb = sciencebasepy.SbSession()
-    raw_path = "data/raw/stinson2019"
-    processed_path = "data/processed/stinson2019"
+    raw_path = os.path.join("data","raw","stinson2019")
+    processed_path = os.path.join("data","processed","stinson2019")
 
     if not os.path.exists(raw_path):
         os.makedirs(raw_path)	
@@ -46,13 +45,13 @@ def stinson2019():
     sb.get_item_files(item_json, raw_path)
 
     # Convert data csv files to dataframes and pickle
-    df = pd.read_csv(raw_path + '/ACERnet_sap_2012_2017_ID.csv',
+    df = pd.read_csv(os.path.join(raw_path, 'ACERnet_sap_2012_2017_ID.csv'),
                     parse_dates=['Date', 'Year'])
     df.columns=[x.lower().replace('.','_') for x in list(df.columns)]
-    df.to_pickle(processed_path + '/stinson2019_df')
+    df.to_pickle(os.path.join(processed_path, 'stinson2019_df'))
 
-    locations = pd.read_csv(raw_path + '/ACERnet_LatLon.csv')
-    locations.to_pickle(processed_path + '/stinson2019_locations')
+    locations = pd.read_csv(os.path.join(raw_path, 'ACERnet_LatLon.csv'))
+    locations.to_pickle(os.path.join(processed_path, 'stinson2019_locations'))
 
 def templer2020():
     """ Loads data from study listed below and creates pandas dataframes containing the data.  Dataframes are saved to .csv.
@@ -79,8 +78,8 @@ def templer2020():
     """
 
 
-    raw_path = "data/raw/templer2020"
-    processed_path = "data/processed/templer2020"
+    raw_path = os.path.join("data","raw","templer2020")
+    processed_path = os.path.join("data","processed", "templer2020")
 
     if not os.path.exists(raw_path):
         os.makedirs(raw_path)	
@@ -145,14 +144,13 @@ def templer2020():
     dt1.instant_sap=pd.to_numeric(dt1.instant_sap,errors='coerce') 
 
         
-    dt1.to_pickle(processed_path + '/templer2020_df')
-    del dt1
+    dt1.to_pickle(os.path.join(processed_path, 'templer2020_df'))
 
 
     # Download raw data and save as csv
     raw_data = requests.get(infile1)
 
-    with open(raw_path + '/templer2020_raw1.csv', 'wb+') as data_file:
+    with open(os.path.join(raw_path, 'templer2020_raw1.csv'), 'wb+') as data_file:
         for chunk in raw_data:
                 data_file.write(chunk)
 
@@ -160,7 +158,7 @@ def templer2020():
     metadata_url = 'https://pasta.lternet.edu/package/metadata/eml/knb-lter-hfr/338/1'
     metadata_xml = requests.get(metadata_url)
 
-    with open(raw_path + '/templer2020_metadata.xml', 'w+') as metadata_file:
+    with open(os.path.join(raw_path, 'templer2020_metadata.xml'), 'w+') as metadata_file:
         metadata_file.write(metadata_xml.text)
 
 def rapp2016():
@@ -189,8 +187,8 @@ def rapp2016():
     for the program to run.
     """
 
-    raw_path = "data/raw/rapp2016"
-    processed_path = "data/processed/rapp2016"
+    raw_path = os.path.join("data","raw","rapp2016")
+    processed_path = os.path.join("data","processed","rapp2016")
 
     if not os.path.exists(raw_path):
         os.makedirs(raw_path)	
@@ -913,21 +911,20 @@ def rapp2016():
     dt_nums = [str(x) for x in list(range(1,15))]
 
     for dt_num in dt_nums:
-        locals()['dt' + dt_num].to_pickle(processed_path + '/dt' + dt_num.zfill(2))
-        del locals()['dt' + dt_num]
+        locals()['dt' + dt_num].to_pickle(os.path.join(processed_path, 'dt' + dt_num.zfill(2)))
         
         
     # Download raw data and save as csv
     for dt_num in dt_nums:
         raw_data = requests.get(locals()['infile' + dt_num])
-        with open(raw_path + '/rapp2016_raw' + dt_num.zfill(2) + '.csv', 'wb+') as data_file:
+        with open(os.path.join(raw_path, 'rapp2016_raw' + dt_num.zfill(2) + '.csv'), 'wb+') as data_file:
             data_file.write(raw_data.content)
 
     # Download metadata and save
     metadata_url = 'https://pasta.lternet.edu/package/metadata/eml/knb-lter-hfr/285/3'
     metadata_xml = requests.get(metadata_url)
 
-    with open(raw_path + '/rapp2016_metadata.xml', 'w+') as metadata_file:
+    with open(os.path.join(raw_path, 'rapp2016_metadata.xml'), 'w+') as metadata_file:
         metadata_file.write(metadata_xml.text)
 
 if __name__ == "__main__":

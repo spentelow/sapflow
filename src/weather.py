@@ -26,15 +26,15 @@ def main():
     if not os.path.exists(processed_path):
         os.makedirs(processed_path)
     
-    record_range = create_stn_year_range()
+    record_range = create_stn_year_range(processed_path)
     weather = get_weather_data(record_range)
 
-    weather.to_pickle(os.path.join(processed_path, 'weather')
+    weather.to_pickle(os.path.join(processed_path, 'weather'))
 
     return
 
 
-def create_stn_year_range():
+def create_stn_year_range(processed_path):
     """Create table containing the range of years for which measurements were 
     collected at the sap data collection site associated with each weather
     station.
@@ -47,7 +47,7 @@ def create_stn_year_range():
 
      Examples
     --------
-    >>> create_stn_year_range()
+    >>> create_stn_year_range(os.path.join("data","processed","stinson2019","norm_tables"))
     """
     # Load required data tables
     weather_stn = pd.read_pickle(os.path.join(processed_path,'weather_stn'))

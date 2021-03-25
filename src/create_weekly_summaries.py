@@ -4,7 +4,7 @@ Create DataFrame with daily summaries of weekly sap and sugar production based o
 author: Steffen Pentelow
 date: 2021-02-19
 
-Usage: src/create_GDD-frthw.py [--location=<location>] [--tree=<tree>] [--tap=<tap>] [--years=<years>] [--species=<species>] 
+Usage: src/create_GDD-frthw.py [--location=<location>] [--tree=<tree>] [--tap=<tap>] [--years=<years>] [--species=<species>]
 
 Options:
 --location=<location>   Name of locations (sites) to be included in data table [default: all]
@@ -23,20 +23,15 @@ from docopt import docopt
 # opt = docopt(__doc__)
 
 
-def main(opt):
-    loc = opt["--location"]
-    tre = opt["--tree"]
-    tp = opt["--tap"]
-    yrs = opt["--years"]
-    spec = opt["--species"]
+def main(loc = 'all', tre = 'all', tp = 'all', yrs = 'all', spec = 'ACSA'):
 
-    processed_path = "data/processed/stinson2019/"
+    processed_path = os.path.join("data", "processed", "stinson2019")
 
-    if not os.path.exists(processed_path + "norm_tables"):
-        os.makedirs(processed_path + "norm_tables")
+    if not os.path.exists(os.path.join(processed_path, "norm_tables")):
+        os.makedirs(os.path.join(processed_path, "norm_tables"))
 
     # Load sap flow data
-    stinson2019 = pd.read_pickle(processed_path + "stinson2019_df")
+    stinson2019 = pd.read_pickle(os.path.join(processed_path, "stinson2019_df"))
 
     data = add_ids(stinson2019)  # Add unique record id column to dataframe
     normalized_data = normalized_tables(data)  # Move data to normalized tables
@@ -50,13 +45,13 @@ def main(opt):
         :, ["date_from", "date_to", "weekly_sugarwt", "weekly_sap", "site"]
     ]
 
-    full_df.to_pickle(processed_path + "full_weekly_summary")
-    sap_sugar_df.to_pickle(processed_path + "sap_sugar_weekly_summary")
+    full_df.to_pickle(os.path.join(processed_path, "full_weekly_summary"))
+    sap_sugar_df.to_pickle(os.path.join(processed_path, "sap_sugar_weekly_summary"))
 
     # Save normalized tables
     for table in normalized_data.keys():
-        normalized_data[table].to_pickle(processed_path + "norm_tables/" + table)
-    
+        normalized_data[table].to_pickle(os.path.join(processed_path, "norm_tables/", table))
+
     return
 
 
@@ -330,4 +325,10 @@ def get_weekly_data(
 
 if __name__ == "__main__":
     opt = docopt(__doc__)
-    main(opt)
+    loc = opt["--location"]
+    tre = opt["--tree"]
+    tp = opt["--tap"]
+    yrs = opt["--years"]
+    spec = opt["--species"]
+
+    main(loc=loc, tre=tre, tp=tp, yrs=yrs, spec=spec)
