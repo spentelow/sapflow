@@ -5,7 +5,7 @@ data and save pickled dataframe with daily counts of both.
 author: Steffen Pentelow
 date: 2021-02-19
 
-Usage: src/create_GDD-frthw.py [--gdd_tbase=<gdd_tbase>] [--ft_threshold=<ft_threshold>]
+Usage: src/create_GDD_frthw.py [--gdd_tbase=<gdd_tbase>] [--ft_threshold=<ft_threshold>]
 
 Options:
 --gdd_tbase=<gdd_tbase>     Base temperature for growing degree days [default: 5]
@@ -23,14 +23,14 @@ def main(opt):
     tbase = float(opt['--gdd_tbase'])  # Growing degree day base temperature
     threshold = float(opt['--ft_threshold'])  # Freeze-thaw temperature threshold
 
-    raw_path = "data/raw/HF_weather"
-    processed_path = "data/processed/HF_weather"
+    raw_path = os.path.join("data", "raw", "HF_weather")
+    processed_path = os.path.join("data","processed", "HF_weather")
 
     if not os.path.exists(processed_path):
         os.makedirs(processed_path)
 
     # Load weather station data set
-    HF_weather = pd.read_csv(raw_path + '/hf001-08-hourly-m.csv', parse_dates=['datetime'])
+    HF_weather = pd.read_csv(os.path.join(raw_path, 'hf001-08-hourly-m.csv'), parse_dates=['datetime'])
     HF_stn_id = 'HF001'
     HF_datetime = 'datetime' #name of datetime column in HF station data
     HF_airt = 'airt' #name of air temperature column in HF station data
@@ -39,7 +39,7 @@ def main(opt):
     frzthw = get_frthw(HF_weather, HF_stn_id, threshold=threshold, datetime=HF_datetime, airtemp = HF_airt)
 
     gdd_frthw = pd.concat([gdd, frzthw.reset_index()["frthw"]], axis=1)
-    gdd_frthw.to_pickle(processed_path + '/gdd_frthw')
+    gdd_frthw.to_pickle(os.path.join(processed_path, 'gdd_frthw'))
 
     return
 
