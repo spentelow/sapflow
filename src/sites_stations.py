@@ -88,11 +88,11 @@ def create_closest_stn_tbl():
 
     stn_ids = [
         ["INDU", "726358-00384"],
-        ["SOUTHERNMOST MAPLE", "724115-93757"],
-        ["DIVIDE RIDGE", "724117-63802"],
-        ["NORTHERN RANGE - QUEBEC", "716170-99999"],
-        ["HARVARD FOREST", "725085-54756"],
-        ["DARTMOUTH ORGANIC FARM", "726116-94765"],
+        ["SMM", "724115-93757"],
+        ["DR", "724117-63802"],
+        ["QC", "716170-99999"],
+        ["HF", "725085-54756"],
+        ["DOF", "726116-94765"],
     ]
 
     closest_weather_station = pd.DataFrame(
