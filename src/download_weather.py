@@ -6,7 +6,7 @@ collected.
 author: Steffen Pentelow
 date: 2021-03-25
 
-Usage: src/weather.py
+Usage: src/download_weather.py
 """
 
 import os

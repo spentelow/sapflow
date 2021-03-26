@@ -6,7 +6,7 @@ station information (table names: 'location', 'closest_weather_stn',
 author: Steffen Pentelow
 date: 2021-03-15
 
-Usage: src/sites_stations.py
+Usage: src/create_location_tables.py
 """
 
 import os

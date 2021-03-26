@@ -17,28 +17,27 @@ import pandas as pd
 import os
 from docopt import docopt
 
-opt = docopt(__doc__)
 
-def main(opt):
-    tbase = float(opt['--gdd_tbase'])  # Growing degree day base temperature
-    threshold = float(opt['--ft_threshold'])  # Freeze-thaw temperature threshold
+def main(tbase = 5, threshold = 3):
+    tbase = float(tbase)
+    threshold = float(threshold)
 
-    raw_path = os.path.join("data", "raw", "HF_weather")
-    processed_path = os.path.join("data","processed", "HF_weather")
+    processed_path = os.path.join("data","processed", "stinson2019", "norm_tables")
 
     if not os.path.exists(processed_path):
         os.makedirs(processed_path)
+   
+    weather = pd.read_pickle(os.path.join(processed_path, 'weather'))  # Load weather station data set
 
-    # Load weather station data set
-    HF_weather = pd.read_csv(os.path.join(raw_path, 'hf001-08-hourly-m.csv'), parse_dates=['datetime'])
-    HF_stn_id = 'HF001'
-    HF_datetime = 'datetime' #name of datetime column in HF station data
-    HF_airt = 'airt' #name of air temperature column in HF station data
+    gdd_frthw = pd.DataFrame(columns = ['datetime', 'mean_airt', 'GDD', 'cumGDD', 'STN', 'frthw'])
     
-    gdd = get_gdd(HF_weather, HF_stn_id, tbase=tbase, datetime=HF_datetime, airtemp = HF_airt)
-    frzthw = get_frthw(HF_weather, HF_stn_id, threshold=threshold, datetime=HF_datetime, airtemp = HF_airt)
-
-    gdd_frthw = pd.concat([gdd, frzthw.reset_index()["frthw"]], axis=1)
+    for station in weather.index.unique().to_list():
+        datetime = 'datetime' #name of datetime column in HF station data
+        airt = 'air_temp' #name of air temperature column in HF station data
+        gdd = get_gdd(weather[weather.index == station], station, tbase=tbase, datetime=datetime, airtemp = airt)
+        frzthw = get_frthw(weather[weather.index == station], station, threshold=threshold, datetime=datetime, airtemp = airt)
+        gdd_frthw = gdd_frthw.append(pd.concat([gdd, frzthw.reset_index()["frthw"]], axis=1))
+    
     gdd_frthw.to_pickle(os.path.join(processed_path, 'gdd_frthw'))
 
     return
@@ -114,7 +113,9 @@ def get_frthw(data, stn_id, threshold, datetime="datetime", airtemp="airt"):
     frthw_df = pd.DataFrame()
 
     data_datetime = pd.DatetimeIndex(data[datetime])
+    pd.set_option("mode.chained_assignment", None)
     data["frthw"] = np.nan
+    pd.set_option("mode.chained_assignment", "warn")
 
     for year in data_datetime.year.unique():
 
@@ -143,4 +144,8 @@ def get_frthw(data, stn_id, threshold, datetime="datetime", airtemp="airt"):
     return frthw_df
 
 if __name__ == "__main__":
-    main(opt)
+
+    opt = docopt(__doc__)
+    tbase = opt["--gdd_tbase"]
+    threshold = opt["--ft_threshold"]
+    main(tbase = tbase, threshold=threshold)
