@@ -29,11 +29,11 @@ def main(tbase = 5, threshold = 3):
    
     weather = pd.read_pickle(os.path.join(processed_path, 'weather'))  # Load weather station data set
 
-    gdd_frthw = pd.DataFrame(columns = ['datetime', 'mean_airt', 'GDD', 'cumGDD', 'STN', 'frthw'])
+    gdd_frthw = pd.DataFrame(columns = ['stn_id', 'datetime', 'mean_airt', 'GDD', 'cumGDD', 'frthw'])
     
     for station in weather.index.unique().to_list():
-        datetime = 'datetime' #name of datetime column in HF station data
-        airt = 'air_temp' #name of air temperature column in HF station data
+        datetime = 'datetime'  # name of datetime column in HF station data
+        airt = 'air_temp'  # name of air temperature column in HF station data
         gdd = get_gdd(weather[weather.index == station], station, tbase=tbase, datetime=datetime, airtemp = airt)
         frzthw = get_frthw(weather[weather.index == station], station, threshold=threshold, datetime=datetime, airtemp = airt)
         gdd_frthw = gdd_frthw.append(pd.concat([gdd, frzthw.reset_index()["frthw"]], axis=1))
@@ -71,6 +71,30 @@ def get_gdd(data, stn_id, tbase, datetime="datetime", airtemp="airt"):
         .reset_index()
     )
     gdd_df.rename(columns={airtemp: "mean_airt"}, inplace=True)
+    gdd_df = gdd_df.dropna()
+
+    dates_index = pd.date_range(gdd_df.datetime.min(), gdd_df.datetime.max())
+
+    # If there are missing mean daily temperature values, forward fill from the
+    # last valid measurement.
+    
+    if (len(dates_index) - len(gdd_df)) > 0:
+        print(
+            f'''
+            Warning: Some days within the data collection window do not have
+            associated temperature readings from weather station {stn_id}.
+            A total of {len(dates_index) - len(gdd_df):.0f} days are missing temperature
+            readings and have been filled with values from the previous day
+            with temperature readings.
+            '''
+            )
+        gdd_df.set_index('datetime', inplace = True)
+        gdd_df.index = pd.DatetimeIndex(gdd_df.index)
+        gdd_df = gdd_df.reindex(dates_index, method='ffill')
+        gdd_df = gdd_df.reset_index()
+        gdd_df.rename(columns={'index':'datetime'}, inplace=True)
+
+
     gdd_df["GDD"] = gdd_df[["mean_airt"]].applymap(
         lambda x: 0 if x <= tbase else x - tbase
     )
@@ -82,7 +106,7 @@ def get_gdd(data, stn_id, tbase, datetime="datetime", airtemp="airt"):
             data_datetime.year == year
         ]["GDD"].cumsum()
 
-    gdd_df["STN"] = stn_id
+    gdd_df["stn_id"] = stn_id
 
     return gdd_df
 
@@ -139,7 +163,7 @@ def get_frthw(data, stn_id, threshold, datetime="datetime", airtemp="airt"):
         year_data = year_data.set_index(datetime).resample("1D").last()
         frthw_df = frthw_df.append(year_data)
 
-    frthw_df["STN"] = stn_id
+    frthw_df["stn_id"] = stn_id
 
     return frthw_df
 
