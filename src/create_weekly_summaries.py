@@ -33,8 +33,13 @@ def main(loc = 'all', tre = 'all', tp = 'all', yrs = 'all', spec = 'ACSA'):
     full_df = full_df.reset_index().merge(
         tree_site, on="tree", how="left"
     )
+    
+    sap_sugar_df = full_df.loc[
+        :, ["tap_id", "date_from", "date_to", "weekly_sugarwt", "weekly_sap", "site"]
+    ]
 
-    full_df.to_pickle(os.path.join("data", "processed", "stinson2019", "full_weekly_summary"))
+    full_df.to_pickle(os.path.join(processed_path, "full_weekly_summary"))
+    sap_sugar_df.to_pickle(os.path.join(processed_path, "sap_sugar_weekly_summary"))
 
     return
 
