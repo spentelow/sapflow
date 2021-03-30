@@ -1,0 +1,8 @@
+altair_saver
+    conda install -c conda-forge altair_saver
+altair_data_server
+    pip install altair_data_server
+altair
+numpy
+pandas
+sklearn
