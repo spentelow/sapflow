@@ -1,3 +1,4 @@
 data/*
 !data/datadownload.ipynb
 *.log
+.vscode/*
