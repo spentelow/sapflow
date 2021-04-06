@@ -75,8 +75,10 @@ def get_gdd(data, stn_id, tbase, datetime="datetime", airtemp="airt"):
 
     dates_index = pd.date_range(gdd_df.datetime.min(), gdd_df.datetime.max())
 
+    # **ASSUMPTION**
     # If there are missing mean daily temperature values, forward fill from the
     # last valid measurement.
+    # **ASSUMPTION**
     
     if (len(dates_index) - len(gdd_df)) > 0:
         print(
@@ -148,7 +150,11 @@ def get_frthw(data, stn_id, threshold, datetime="datetime", airtemp="airt"):
         ]
         frthw = (
             0.5 if year_data.iloc[0, 1] > threshold else 0
-        )  # If first temp reading is above threshold, start frthw at 0.5
+        )  
+        # **ASSUMPTION**
+        # If first temp reading of the year is above the freeze-thaw threshold 
+        # value, start frthw variable at 0.5 (half a freeze-thaw cycle)
+        # **ASSUMPTION**
 
         for obs in range(year_data.shape[0]):
             if frthw % 1 == 0:
@@ -164,20 +170,13 @@ def get_frthw(data, stn_id, threshold, datetime="datetime", airtemp="airt"):
         
         year_data = year_data.dropna()
         dates_index = pd.date_range(year_data.index.min(), year_data.index.max())
+        
+        # **ASSUMPTION**
         # If there are missing mean daily temperature values, forward fill from the
         # last valid measurement.
+        # **ASSUMPTION**
         
         if (len(dates_index) - len(year_data)) > 0:
-            print(
-                f'''
-                Warning: Some days within the data collection window do not 
-                have associated temperature readings from weather station 
-                {stn_id} during year {year}.  A total of 
-                {len(dates_index) - len(year_data):.0f} days are missing 
-                temperature readings.  Temperature readings and derived 
-                parameters have been filled with values from the previous day.
-                '''
-                )
             year_data = year_data.reindex(dates_index, method='ffill')
             print(year_data.columns)
 

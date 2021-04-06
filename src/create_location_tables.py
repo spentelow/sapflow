@@ -85,6 +85,10 @@ def create_closest_stn_tbl():
         Data frame with entries for each site location.
     """
     # Create DF of station IDs
+    # **ASSUMPTION**
+    # The weather stations listed below reflect the weather conditions at the 
+    # sap collections sites well over the period of measurement.
+    # **ASSUMPTION**
 
     stn_ids = [
         ["INDU", "726358-00384"],

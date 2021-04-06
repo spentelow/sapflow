@@ -21,7 +21,6 @@ def main():
 
     processed_path = os.path.join("data","processed","stinson2019","norm_tables")
     raw_path = os.path.join("data","raw")
-    raw_path = "data/raw/stinson2019"
 
     if not os.path.exists(processed_path):
         os.makedirs(processed_path)
@@ -141,12 +140,30 @@ def get_weather_data(record_range):
                     "air_temp",
                 ]
             )
+
+            # **ASSUMPTION**
+            # Where a weather parameter observation value is present, it is a
+            # reasonable value and can be used in the subsequent analyses
+            # regardless of the observation quality code described in
+            # ftp://ftp.ncei.noaa.gov/pub/data/noaa/isd-format-document.pdf
+            # **ASSUMPTION**
+
+            # **TODO**
+            # Consider observation quality codes and reject bad observations.
+            # Extract additional weather parameters.
+            # **TODO**
+
             with gzip.open(compressed_data, mode="rt") as stn_data:
                 stn_data_df = pd.read_csv(stn_data, names=['data'])
                 stn_year_df["datetime"] = pd.to_datetime(stn_data_df.data.str.slice(15,27))
                 stn_year_df["air_temp"] = pd.to_numeric(stn_data_df.data.str.slice(87,92)) /10
 
-            # Replace missing value indicators with NaNs
+            # **ASSUMPTION**
+            # Replace missing data value indicators (as described in 
+            # ftp://ftp.ncei.noaa.gov/pub/data/noaa/isd-format-document.pdf)
+            # with NaNs
+            # **ASSUMPTION**
+
             stn_year_df = stn_year_df.replace(
                 [999, 999.9, 9999.9], [np.nan, np.nan, np.nan]
             )

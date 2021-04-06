@@ -136,8 +136,7 @@ def get_weekly_data(
 
     # Create weekly summaries, iterating through all taps
     for tap in tap_id:
-        #         print("tap:  ", tap)
-        # Create joint dataframe will all required info for current tap
+        # Create joint dataframe with all required info for current tap
         df = (
             tap_records.join(tap_tree[tap_tree.index == tap], how="right", on="tap_id")
             .join(sap, how="left")
@@ -148,10 +147,15 @@ def get_weekly_data(
         df["jd"] = pd.DatetimeIndex(df["date"]).dayofyear
 
         for year in df["year"].unique():
-            #             print('     year: ', year)
             df_year = df[df["year"] == year]
 
-            # Deal with multiple entries per day.  Sap taken as sum of measurements, sugar content as weighted average.
+            # Deal with multiple entries per day.  
+            # **ASSUMPTION**
+            # If there are multiple measurements per day, the 'sap' value is
+            # taken as sum of the measurements, the sugar content as the 
+            # weighted average over the measurements.
+            # **ASSUMPTION**
+
             if not df_year["jd"].is_unique:
                 df_year_temp = copy.copy(df_year)
                 df_year_temp["product"] = df_year_temp.sap * df_year_temp.sugar.fillna(
@@ -174,7 +178,8 @@ def get_weekly_data(
                 df_year["sugar"] = df_year["sugar_sum"]
                 df_year = df_year.drop(columns=["sap_sum", "sugar_sum"])
 
-            # Add entry for every day of year from first day with recorded flow to last
+            # Add entry for every day of year from first day with recorded 
+            # flow to last.
             df_year = (
                 df_year.reset_index()
                 .merge(
@@ -187,12 +192,21 @@ def get_weekly_data(
                 .set_index("date", drop=False)
             )
 
-            # Assumption: missing sugar content should be filled with mean sugar content
+            # Deal with missing sugar content values.
+            # **ASSUMPTION**
+            # Where the sugar content of sap is missing for a given 
+            # measurement, it should be filled with mean sugar content for the
+            # year.
+            # **ASSUMPTION**
+
             df_year["sugarwt"] = (
                 df_year.sap * df_year.sugar.fillna(value=df_year.sugar.mean()) / 100
             )
-
-            # Assumption: missing sap values should be replaced with zeros
+            # Deal with missing sap values
+            # **ASSUMPTION**
+            # Missing sap values should be replaced with zeros.
+            # **ASSUMPTION**
+            
             df_year["cum_sap"] = df_year.sap.fillna(value=0).cumsum()
             df_year["cum_sugarwt"] = df_year.sugarwt.fillna(value=0).cumsum()
             df_year["tap_id"] = df_year.tap_id.fillna(value=tap)
