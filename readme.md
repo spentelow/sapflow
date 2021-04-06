@@ -97,8 +97,7 @@ Canada.” *PLoS One* 10 (12): e0144844.
 
 National Centers for Environmental Information: National Oceanic and
 Atmospheric Administration. n.d. “Integrated Surface Hourly Data Base.”
-[ftp.ncdc.noaa.gov/pub/data/noaa/](ftp.ncdc.noaa.gov/pub/data/noaa/).
-Accessed March 28, 2021.
+<ftp://ftp.ncdc.noaa.gov/pub/data/noaa/>. Accessed March 28, 2021.
 
 </div>
 
