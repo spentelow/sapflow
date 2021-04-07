@@ -43,28 +43,38 @@ future.
 
 This repository consists of:
 
-1.  Various scripts which download, clean, and analyze the data; and
-2.  An interactive coding notebook that walks through the most
-    significant analysis.
+1.  Scripts to download and clean;
+2.  Scripts to create a series of database-like normalized tables; and
+3.  An interactive coding notebook that walks through the most
+    significant analyses.
 
-The first item begins with downloading sap flow data provided for 6
-measurement locations (‘Sites’) by Stinson et al. (2019) from the USGS
-ScienceBase-Catelogue. The data are then normalized into a series of
-smaller tables for ease-of-use. Central to the overall analysis is
-pairing the sap flow data with local weather data. To do so, a NOAA
-weather station nearby each data collection site has been manually
-identified. Pairing these weather stations with the available period of
-measurements for the nearby Sites (extracted from the normalized sap
-flow data), historical weather data from the selected weather stations
-are downloaded for the appropriate periods. Several derived parameters
-were generated from the raw sap and weather data are important to the
-remainder of the analysis: Growing Degree Days (GDD), Freeze-Thaw Cycles
-(frthw), weekly sap flow, and weekly sugar.
+### Pipeline Overview
+
+Sap flow data provided by Stinson et al. (2019) for 6 measurement
+locations (‘Sites’) is downloaded from the USGS ScienceBase-Catelogue.
+These data are then normalized into a series of smaller tables in the
+style of a relational database (see entity relationship diagram below).
+Central to the overall analysis is pairing the sap flow data with local
+weather data. To do so, a NOAA weather station nearby each data
+collection site has been manually identified. Pairing these weather
+stations with the available period of measurements for the nearby Sites
+(extracted from the normalized sap flow data), historical weather data
+from the selected weather stations are downloaded for the appropriate
+periods.
+
+![Chart showing normalized data table
+organization.](documentation/img/norm_tables.svg) *Entity-Relationship
+diagram for normalized data tables.*
+
+Several derived parameters were generated from the raw sap and weather
+data are important to the remainder of the analysis: Growing Degree Days
+(GDD), Freeze-Thaw Cycles (frthw), weekly sap flow, and weekly sugar.
+These parameters are calculated are from the previously noted tables.
 
 Using the tables described above, the prediction model proposed by Houle
-et al. (2015) was tested on data from the Sites investigated by Stinson
+et al. (2015) is tested on data from the Sites investigated by Stinson
 et al. (2019). A [Jupyter Notebook](documentation/weekly_analysis.ipynb)
-was used to perform this analysis and include annotations on each of the
+is used to perform this analysis and include annotations on each of the
 key steps.
 
 The flow chart below illustrates the pipeline comprising this analysis
@@ -72,13 +82,6 @@ at a high level.
 
 ![Flow chart showing repo
 organization.](documentation/img/Sapflow_org.svg)
-
-The following image illustrates the structure and connection between the
-various normalized sap flow and weather data tables. Note that derived
-parameter tables are not included.
-
-![Chart showing normalized data table
-organization.](documentation/img/norm_tables.svg)
 
 ## References
 
