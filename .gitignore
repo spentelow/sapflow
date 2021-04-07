@@ -5,3 +5,4 @@ data/*
 .Rproj.user
 *.Rproj
 sapflow.yml
+readme.Rmd
