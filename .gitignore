@@ -2,3 +2,4 @@ data/*
 !data/datadownload.ipynb
 *.log
 .vscode/*
+.Rproj.user
