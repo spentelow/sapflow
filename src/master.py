@@ -24,6 +24,8 @@ def main(downloads = True, tables = True, derived = True):
         run_tables()
     
     if derived: run_derived()
+
+    print('All Done!')
     
     return
 

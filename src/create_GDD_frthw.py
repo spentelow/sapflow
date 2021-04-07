@@ -5,11 +5,12 @@ data and save pickled dataframe with daily counts of both.
 author: Steffen Pentelow
 date: 2021-02-19
 
-Usage: src/create_GDD_frthw.py [--gdd_tbase=<gdd_tbase>] [--ft_threshold=<ft_threshold>]
+Usage: src/create_GDD_frthw.py [--gdd_tbase=<gdd_tbase>] [--ft_threshold=<ft_threshold>] [--verbose =<verbose>]
 
 Options:
 --gdd_tbase=<gdd_tbase>     Base temperature for growing degree days [default: 5]
 --ft_threshold=<ft_threshold>     Base temperature for growing degree days [default: 3]
+--verbose=<verbose>     Print all warnings (True) or not (False) [default: False]
 """
 
 import numpy as np
@@ -18,7 +19,7 @@ import os
 from docopt import docopt
 
 
-def main(tbase = 5, threshold = 3):
+def main(tbase = 5, threshold = 3, verbose = False):
     tbase = float(tbase)
     threshold = float(threshold)
 
@@ -34,7 +35,7 @@ def main(tbase = 5, threshold = 3):
     for station in weather.index.unique().to_list():
         datetime = 'datetime'  # name of datetime column in HF station data
         airt = 'air_temp'  # name of air temperature column in HF station data
-        gdd = get_gdd(weather[weather.index == station], station, tbase=tbase, datetime=datetime, airtemp = airt)
+        gdd = get_gdd(weather[weather.index == station], station, tbase=tbase, datetime=datetime, airtemp = airt, verbose = verbose)
         frzthw = get_frthw(weather[weather.index == station], station, threshold=threshold, datetime=datetime, airtemp = airt)
         gdd_frthw = gdd_frthw.append(pd.concat([gdd, frzthw.reset_index()["frthw"]], axis=1))
     
@@ -42,7 +43,7 @@ def main(tbase = 5, threshold = 3):
 
     return
 
-def get_gdd(data, stn_id, tbase, datetime="datetime", airtemp="airt"):
+def get_gdd(data, stn_id, tbase, datetime="datetime", airtemp="airt", verbose=False):
     """Calculate cumulative growing degree days (GDD) from weather station data
 
     Parameters
@@ -81,15 +82,16 @@ def get_gdd(data, stn_id, tbase, datetime="datetime", airtemp="airt"):
     # **ASSUMPTION**
     
     if (len(dates_index) - len(gdd_df)) > 0:
-        print(
-            f'''
-            Warning: Some days within the data collection window do not have
-            associated temperature readings from weather station {stn_id}.
-            A total of {len(dates_index) - len(gdd_df):.0f} days are missing temperature
-            readings and have been filled with values from the previous day
-            with temperature readings.
-            '''
-            )
+        if verbose:
+            print(
+                f'''
+                Warning: Some days within the data collection window do not have
+                associated temperature readings from weather station {stn_id}.
+                A total of {len(dates_index) - len(gdd_df):.0f} days are missing temperature
+                readings and have been filled with values from the previous day
+                with temperature readings.
+                '''
+                )
         gdd_df.set_index('datetime', inplace = True)
         gdd_df.index = pd.DatetimeIndex(gdd_df.index)
         gdd_df = gdd_df.reindex(dates_index, method='ffill')
@@ -178,7 +180,6 @@ def get_frthw(data, stn_id, threshold, datetime="datetime", airtemp="airt"):
         
         if (len(dates_index) - len(year_data)) > 0:
             year_data = year_data.reindex(dates_index, method='ffill')
-            print(year_data.columns)
 
         frthw_df = frthw_df.append(year_data)
 
@@ -191,4 +192,10 @@ if __name__ == "__main__":
     opt = docopt(__doc__)
     tbase = opt["--gdd_tbase"]
     threshold = opt["--ft_threshold"]
-    main(tbase = tbase, threshold=threshold)
+    
+    if opt["--verbose"] in ['True', 't', 'T','true','1','yes','Yes','y','Y']:
+        verbose = True
+    else:
+        verbose = False
+    
+    main(tbase = tbase, threshold=threshold,verbose=verbose)
