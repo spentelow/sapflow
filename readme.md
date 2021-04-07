@@ -1,6 +1,5 @@
 `sapflow`: An analysis of weekly maple sap prediction
 ================
-Steffen Pentelow
 
 # About
 
