@@ -24,6 +24,10 @@ from docopt import docopt
 def main(loc = 'all', tre = 'all', tp = 'all', yrs = 'all', spec = 'ACSA'):
 
     processed_path = os.path.join("data", "processed", "stinson2019", "norm_tables")
+    derived_path = os.path.join("data", "processed", "stinson2019", "derived_tables")
+
+    if not os.path.exists(derived_path):
+        os.makedirs(derived_path)
 
     full_df = get_weekly_data(
        processed_path, location=loc, tree=tre, tap_id=tp, years=yrs, species=spec
@@ -38,8 +42,8 @@ def main(loc = 'all', tre = 'all', tp = 'all', yrs = 'all', spec = 'ACSA'):
         :, ["tap_id", "date_from", "date_to", "weekly_sugarwt", "weekly_sap", "site"]
     ]
 
-    full_df.to_pickle(os.path.join(processed_path, "full_weekly_summary"))
-    sap_sugar_df.to_pickle(os.path.join(processed_path, "sap_sugar_weekly_summary"))
+    full_df.to_pickle(os.path.join(derived_path, "full_weekly_summary"))
+    sap_sugar_df.to_pickle(os.path.join(derived_path, "sap_sugar_weekly_summary"))
 
     return
 

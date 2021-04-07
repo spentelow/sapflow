@@ -73,15 +73,47 @@ These parameters are calculated are from the previously noted tables.
 
 Using the tables described above, the prediction model proposed by Houle
 et al. (2015) is tested on data from the Sites investigated by Stinson
-et al. (2019). A [Jupyter Notebook](documentation/weekly_analysis.ipynb)
-is used to perform this analysis and include annotations on each of the
-key steps.
+et al. (2019). A [Jupyter
+Notebook](documentation/houle_analysis_comparison.ipynb) is used to
+perform this analysis and include annotations on each of the key steps.
 
 The flow chart below illustrates the pipeline comprising this analysis
 at a high level.
 
 ![Flow chart showing repo
 organization.](documentation/img/sapflow_org.svg)
+
+## Usage
+
+  - Install the packages listed in requirements.txt
+      - For convenience, a conda environment file has been included in
+        this repository and can be used instead of installing each
+        package individually. To create the conda environment run the
+        following terminal command from the root of this repository:
+    <!-- end list -->
+    ``` bash
+    conda env create -f sapflow.yml
+    ```
+      - Switch into the new conda environment:
+    <!-- end list -->
+    ``` bash
+     conda activate sapflow
+    ```
+  - Download and process the raw data locally by running the following
+    terminal command from the root of the repository (should take \<5
+    minutes on most machines)
+
+<!-- end list -->
+
+``` bash
+python src/master.py
+```
+
+  - The Jupyter Notebook
+    [houle\_analysis\_comparison.ipynb](documentation/houle_analysis_comparison.ipynb)
+    located in the documentation directory can then be run to explore
+    the analysis of the model by Houle et al. (2015) using the data from
+    Stinson et al. (2019)
 
 ## References
 

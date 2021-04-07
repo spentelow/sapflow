@@ -24,9 +24,14 @@ def main(tbase = 5, threshold = 3, verbose = False):
     threshold = float(threshold)
 
     processed_path = os.path.join("data","processed", "stinson2019", "norm_tables")
+    derived_path = os.path.join("data", "processed", "stinson2019", "derived_tables")
 
     if not os.path.exists(processed_path):
         os.makedirs(processed_path)
+
+    if not os.path.exists(derived_path):
+        os.makedirs(derived_path)
+
    
     weather = pd.read_pickle(os.path.join(processed_path, 'weather'))  # Load weather station data set
 
@@ -39,7 +44,7 @@ def main(tbase = 5, threshold = 3, verbose = False):
         frzthw = get_frthw(weather[weather.index == station], station, threshold=threshold, datetime=datetime, airtemp = airt)
         gdd_frthw = gdd_frthw.append(pd.concat([gdd, frzthw.reset_index()["frthw"]], axis=1))
     
-    gdd_frthw.to_pickle(os.path.join(processed_path, 'gdd_frthw'))
+    gdd_frthw.to_pickle(os.path.join(derived_path, 'gdd_frthw'))
 
     return
 
