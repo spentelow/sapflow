@@ -81,7 +81,7 @@ The flow chart below illustrates the pipeline comprising this analysis
 at a high level.
 
 ![Flow chart showing repo
-organization.](documentation/img/Sapflow_org.svg)
+organization.](documentation/img/sapflow_org.svg)
 
 ## References
 

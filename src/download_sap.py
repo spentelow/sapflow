@@ -10,7 +10,6 @@ Usage: python src/data_download_sap.py
 import sciencebasepy
 import os
 import pandas as pd
-import requests
 
 
 def main():

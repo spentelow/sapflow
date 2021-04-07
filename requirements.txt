@@ -1,8 +1,14 @@
-altair_saver
-    conda install -c conda-forge altair_saver
-altair_data_server
-    pip install altair_data_server
-altair
-numpy
-pandas
-sklearn
+altair >= 4.1
+altair_data_server >= 0.4.1
+numpy >= 1.20.1
+pandas >= 1.2.3
+scikit-learn >= 0.24.1
+docopt >= 0.6.2
+sciencebasepy >= 1.6.9
+
+# Standard Libraries
+copy
+os
+ftplib
+gzip
+io
