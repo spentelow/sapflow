@@ -65,10 +65,10 @@ periods.
 organization.](documentation/img/norm_tables.svg) *Entity-Relationship
 diagram for normalized data tables.*
 
-Several derived parameters were generated from the raw sap and weather
-data are important to the remainder of the analysis: Growing Degree Days
-(GDD), Freeze-Thaw Cycles (frthw), weekly sap flow, and weekly sugar.
-These parameters are calculated are from the previously noted tables.
+Several derived features important to the remainder of the analysis are
+generated from the raw sap and weather data: Growing Degree Days (GDD),
+Freeze-Thaw Cycles (frthw), weekly sap flow, and weekly sugar. These
+features are calculated are from the previously noted tables.
 
 Using the tables described above, the prediction model proposed by Houle
 et al. (2015) is tested on data from the Sites investigated by Stinson
