@@ -109,10 +109,12 @@ python src/master.py
 ```
 
   - The Jupyter Notebook
-    [houle\_analysis\_comparison.ipynb](documentation/houle_analysis_comparison.ipynb)
+    [houle\_analysis\_comparison.ipynb](notebooks/houle_analysis_comparison.ipynb)
     located in the documentation directory can then be run to explore
     the analysis of the model by Houle et al. (2015) using the data from
-    Stinson et al. (2019)
+    Stinson et al. (2019). An .html version of this notebook can be
+    viewed at [this
+    link](http://htmlpreview.github.io/?https://github.com/spentelow/sapflow/blob/main/notebooks/houle_analysis_comparison.html).
 
 ## References
 
