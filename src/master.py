@@ -19,7 +19,7 @@ def main(downloads = True, tables = True, derived = True):
     if downloads: 
         run_downloads()
     elif tables: 
-        # Only run run_tables() explicity if run_downloads() has not run since
+        # Only run run_tables() explicity if run_downloads() has not run because
         # run_tables() is run within run_downloads()
         run_tables()
     
