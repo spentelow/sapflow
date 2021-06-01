@@ -4,17 +4,15 @@
 # About
 
 It is widely accepted that maple syrup is the most delicious substance
-known to humanity
-([Pentelow, 2021](https://github.com/spentelow/sapflow)). There is a
-large and growing body of research related to the biological, chemical,
-and climatic factors affecting the production of maple syrup. As more
-and more data are collected these areas, the application of data science
-techniques provides value in organizing and visualizing the data as well
-as in inference and prediction tasks. This repository draws together sap
-production data made available by Stinson et al. (2019), publicly
-available weather data from the US National Oceanic and Atmospheric
-Administration weather stations, and a prediction model proposed by
-Houle et al. (2015).
+known to humanity. There is a large and growing body of research related
+to the biological, chemical, and climatic factors affecting the
+production of maple syrup. As more and more data are collected these
+areas, the application of data science techniques provides value in
+organizing and visualizing the data as well as in inference and
+prediction tasks. This repository draws together sap production data
+made available by Stinson et al. (2019), publicly available weather data
+from the US National Oceanic and Atmospheric Administration weather
+stations, and a prediction model proposed by Houle et al. (2015).
 
 ## Purpose
 
@@ -73,8 +71,8 @@ features are calculated are from the previously noted tables.
 Using the tables described above, the prediction model proposed by Houle
 et al. (2015) is tested on data from the Sites investigated by Stinson
 et al. (2019). A [Jupyter
-Notebook](documentation/houle_analysis_comparison.ipynb) is used to
-perform this analysis and include annotations on each of the key steps.
+Notebook](notebooks/houle_analysis_comparison.ipynb) is used to perform
+this analysis and include annotations on each of the key steps.
 
 The flow chart below illustrates the pipeline comprising this analysis
 at a high level.
