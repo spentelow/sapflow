@@ -14,6 +14,12 @@ made available by Stinson et al. (2019), publicly available weather data
 from the US National Oceanic and Atmospheric Administration weather
 stations, and a prediction model proposed by Houle et al. (2015).
 
+## Jump to highlights
+
+  - [Data
+    visualizations](https://spentelow.github.io/sapflow/notebooks/data_vis.html)
+  - [Analysis](https://spentelow.github.io/sapflow/notebooks/houle_analysis_comparison.html)
+
 ## Purpose
 
 This repository has been created with three primary purposes:
@@ -112,7 +118,7 @@ python src/master.py
     the analysis of the model by Houle et al. (2015) using the data from
     Stinson et al. (2019). An .html version of this notebook can be
     viewed at [this
-    link](http://htmlpreview.github.io/?https://github.com/spentelow/sapflow/blob/main/notebooks/houle_analysis_comparison.html).
+    link](https://spentelow.github.io/sapflow/notebooks/houle_analysis_comparison.html).
 
 ## References
 
