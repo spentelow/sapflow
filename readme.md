@@ -1,4 +1,4 @@
-`sapflow`: An analysis of weekly maple sap prediction
+`sapflow`: An analysis of weekly sap prediction in maple trees
 ================
 
 # About
