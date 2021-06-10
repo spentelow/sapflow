@@ -3,16 +3,17 @@
 
 # About
 
-It is widely accepted that maple syrup is the most delicious substance
-known to humanity. There is a large and growing body of research related
-to the biological, chemical, and climatic factors affecting the
-production of maple syrup. As more and more data are collected these
-areas, the application of data science techniques provides value in
-organizing and visualizing the data as well as in inference and
-prediction tasks. This repository draws together sap production data
-made available by Stinson et al. (2019), publicly available weather data
-from the US National Oceanic and Atmospheric Administration weather
-stations, and a prediction model proposed by Houle et al. (2015).
+[Maple syrup](https://en.wikipedia.org/wiki/Maple_syrup) is the most
+delicious substance in the world. There is a large and growing body of
+research related to the biological, chemical, and climatic factors
+affecting the production of maple syrup. As more and more data are
+collected in these areas, the application of data science techniques
+provides value in organizing and visualizing the data as well as in
+inference and prediction tasks. This repository draws together sap
+production data made available by Stinson et al. (2019), publicly
+available weather data from the US National Oceanic and Atmospheric
+Administration weather stations, and a prediction model proposed by
+Houle et al. (2015).
 
 ## Jump to highlights
 

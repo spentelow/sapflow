@@ -14270,7 +14270,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import required pacakages</span>
@@ -14282,6 +14282,7 @@ a.anchor-link {
 
 <span class="c1"># Handle large data sets without embedding them in the notebook</span>
 <span class="n">alt</span><span class="o">.</span><span class="n">data_transformers</span><span class="o">.</span><span class="n">enable</span><span class="p">(</span><span class="s2">&quot;data_server&quot;</span><span class="p">)</span>
+<span class="n">alt</span><span class="o">.</span><span class="n">renderers</span><span class="o">.</span><span class="n">enable</span><span class="p">(</span><span class="s1">&#39;html&#39;</span><span class="p">)</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -14302,7 +14303,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load sap measurement data</span>
@@ -14335,7 +14336,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># **TODO**</span>
@@ -14437,18 +14438,18 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-87cf7ba584a74fae9cd5910333f7706b"></div>
+<div id="altair-viz-74b413f4a6e84bb6bdaeafcfaf58d7ab"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-87cf7ba584a74fae9cd5910333f7706b") {
-      outputDiv = document.getElementById("altair-viz-87cf7ba584a74fae9cd5910333f7706b");
+    if (outputDiv.id !== "altair-viz-74b413f4a6e84bb6bdaeafcfaf58d7ab") {
+      outputDiv = document.getElementById("altair-viz-74b413f4a6e84bb6bdaeafcfaf58d7ab");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -14490,7 +14491,7 @@ a.anchor-link {
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/world-110m.json", "format": {"feature": "countries", "type": "topojson"}}, "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}}, {"layer": [{"data": {"url": "http://localhost:17017/6a9d51256d2a29de4cd0decf8b1192ae.json"}, "mark": "circle", "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 30}}}, {"data": {"url": "http://localhost:17017/c513c0b4c3b688f35c6391a0c32f9cf9.json"}, "mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": -3}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 10}, "text": {"type": "nominal", "field": "long_name"}}}, {"data": {"url": "http://localhost:17017/42cae4e09c0ea6671d863dd16689fd69.json"}, "mark": {"type": "text", "align": "right", "baseline": "middle", "dx": -5, "dy": -3}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 10}, "text": {"type": "nominal", "field": "long_name"}}}]}, {"layer": [{"data": {"url": "http://localhost:17017/8c78950b0118cef8cf544c8ed8d94bae.json"}, "mark": {"type": "circle", "color": "black"}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 10}}}, {"data": {"url": "http://localhost:17017/60d275094440541e814b1b75d303a20b.json"}, "mark": {"type": "text", "align": "left", "baseline": "middle", "color": "grey", "dx": 5, "dy": 7}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 8}, "text": {"type": "nominal", "field": "stn_name"}}}, {"data": {"url": "http://localhost:17017/ba8d8dd783b7111f02c165e0a55a22a1.json"}, "mark": {"type": "text", "align": "right", "baseline": "middle", "color": "grey", "dx": -5, "dy": 7}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 8}, "text": {"type": "nominal", "field": "stn_name"}}}]}], "height": 600, "projection": {"scale": 1200, "translate": [2200, 1100], "type": "equirectangular"}, "width": 1000, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/world-110m.json", "format": {"feature": "countries", "type": "topojson"}}, "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}}, {"layer": [{"data": {"url": "http://localhost:19673/6a9d51256d2a29de4cd0decf8b1192ae.json"}, "mark": "circle", "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 30}}}, {"data": {"url": "http://localhost:19673/c513c0b4c3b688f35c6391a0c32f9cf9.json"}, "mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 5, "dy": -3}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 10}, "text": {"type": "nominal", "field": "long_name"}}}, {"data": {"url": "http://localhost:19673/42cae4e09c0ea6671d863dd16689fd69.json"}, "mark": {"type": "text", "align": "right", "baseline": "middle", "dx": -5, "dy": -3}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 10}, "text": {"type": "nominal", "field": "long_name"}}}]}, {"layer": [{"data": {"url": "http://localhost:19673/8c78950b0118cef8cf544c8ed8d94bae.json"}, "mark": {"type": "circle", "color": "black"}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 10}}}, {"data": {"url": "http://localhost:19673/60d275094440541e814b1b75d303a20b.json"}, "mark": {"type": "text", "align": "left", "baseline": "middle", "color": "grey", "dx": 5, "dy": 7}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 8}, "text": {"type": "nominal", "field": "stn_name"}}}, {"data": {"url": "http://localhost:19673/ba8d8dd783b7111f02c165e0a55a22a1.json"}, "mark": {"type": "text", "align": "right", "baseline": "middle", "color": "grey", "dx": -5, "dy": 7}, "encoding": {"latitude": {"field": "lat", "type": "quantitative"}, "longitude": {"field": "lon", "type": "quantitative"}, "size": {"value": 8}, "text": {"type": "nominal", "field": "stn_name"}}}]}], "height": 600, "projection": {"scale": 1200, "translate": [2200, 1100], "type": "equirectangular"}, "width": 1000, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
 </script>
 </div>
 
@@ -14515,7 +14516,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a dataframe (`full_sap`) which contains information on both sap flow and the growing degree days and freeze/thaw cycles for all tap/year combinations</span>
@@ -14595,7 +14596,7 @@ a.anchor-link {
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">full_sap</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14614,7 +14615,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 
 
 
@@ -14751,7 +14752,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Coefficients of linear model created by Houle 2015 and threshold for predicting &#39;True&#39; for sap flow from logistic function</span>
@@ -14805,7 +14806,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">LR_table</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -14824,7 +14825,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 
 
 
@@ -14987,7 +14988,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate summary of performance of Houle et al., 2015 model in terms of precision of prediction for weeks with sap flow (`precision_1`) </span>
@@ -15016,7 +15017,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">LR_summary</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -15035,7 +15036,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 
 
 
@@ -15173,7 +15174,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creates sample plot demonstrating output of sigmoid function over the course of a year.</span>
@@ -15263,18 +15264,18 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-5b6f2c05811d44c2b537d66d0054e141"></div>
+<div id="altair-viz-0a12962e25554cd3b327fcafdec4713b"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-5b6f2c05811d44c2b537d66d0054e141") {
-      outputDiv = document.getElementById("altair-viz-5b6f2c05811d44c2b537d66d0054e141");
+    if (outputDiv.id !== "altair-viz-0a12962e25554cd3b327fcafdec4713b") {
+      outputDiv = document.getElementById("altair-viz-0a12962e25554cd3b327fcafdec4713b");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -15316,7 +15317,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}, "legend": {"labelLimit": 0}}, "layer": [{"data": {"url": "http://localhost:17017/65cc2e6ddb7570f4d8d825528b11868a.json"}, "mark": {"type": "point", "opacity": 0.8, "size": 100, "stroke": null}, "encoding": {"fill": {"type": "nominal", "field": "variable", "scale": {"domain": ["Sap observed; sap predicted by LR (tp)", "Sap observed; no sap predicted by LR (fn)", "No sap observed; no sap predicted by LR (tn)", "No sap observed; sap predicted by LR (fp)"], "range": ["green", "red", "green", "red"]}, "title": "LR Result"}, "shape": {"type": "nominal", "field": "variable", "scale": {"domain": ["Sap observed; sap predicted by LR (tp)", "Sap observed; no sap predicted by LR (fn)", "No sap observed; no sap predicted by LR (tn)", "No sap observed; sap predicted by LR (fp)"], "range": ["cross", "cross", "circle", "circle"]}}, "x": {"type": "quantitative", "field": "jd", "scale": {"domain": [60, 150]}, "title": "Day of year"}, "y": {"type": "quantitative", "field": "S", "title": "Sigmoid function output"}}, "selection": {"selector001": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}}, {"data": {"url": "http://localhost:17017/b628605fc89a5d4df42d52d169e0f6a1.json"}, "mark": {"type": "rule", "color": "black", "strokeDash": [10, 10]}, "encoding": {"y": {"type": "quantitative", "field": "ht"}}}], "height": 500, "width": 800, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}, "legend": {"labelLimit": 0}}, "layer": [{"data": {"url": "http://localhost:19673/65cc2e6ddb7570f4d8d825528b11868a.json"}, "mark": {"type": "point", "opacity": 0.8, "size": 100, "stroke": null}, "encoding": {"fill": {"type": "nominal", "field": "variable", "scale": {"domain": ["Sap observed; sap predicted by LR (tp)", "Sap observed; no sap predicted by LR (fn)", "No sap observed; no sap predicted by LR (tn)", "No sap observed; sap predicted by LR (fp)"], "range": ["green", "red", "green", "red"]}, "title": "LR Result"}, "shape": {"type": "nominal", "field": "variable", "scale": {"domain": ["Sap observed; sap predicted by LR (tp)", "Sap observed; no sap predicted by LR (fn)", "No sap observed; no sap predicted by LR (tn)", "No sap observed; sap predicted by LR (fp)"], "range": ["cross", "cross", "circle", "circle"]}}, "x": {"type": "quantitative", "field": "jd", "scale": {"domain": [60, 150]}, "title": "Day of year"}, "y": {"type": "quantitative", "field": "S", "title": "Sigmoid function output"}}, "selection": {"selector001": {"type": "interval", "bind": "scales", "encodings": ["x", "y"]}}}, {"data": {"url": "http://localhost:19673/b628605fc89a5d4df42d52d169e0f6a1.json"}, "mark": {"type": "rule", "color": "black", "strokeDash": [10, 10]}, "encoding": {"y": {"type": "quantitative", "field": "ht"}}}], "height": 500, "width": 800, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
 </script>
 </div>
 
@@ -15335,7 +15336,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Generate plots showing prediction precision by site (red lines for comparison to precision reported by Houle et al., 2015)</span>
@@ -15385,7 +15386,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">prec_1_plt</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
@@ -15404,18 +15405,18 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-08f686caedd8415088bdf5ad73c90b57"></div>
+<div id="altair-viz-5f3e94ec20a043548e752f7718c9142f"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-08f686caedd8415088bdf5ad73c90b57") {
-      outputDiv = document.getElementById("altair-viz-08f686caedd8415088bdf5ad73c90b57");
+    if (outputDiv.id !== "altair-viz-5f3e94ec20a043548e752f7718c9142f") {
+      outputDiv = document.getElementById("altair-viz-5f3e94ec20a043548e752f7718c9142f");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -15457,7 +15458,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"data": {"url": "http://localhost:17017/7f7f1adf35eab0a69b74a555c8fa13a2.json"}, "mark": "boxplot", "encoding": {"x": {"type": "nominal", "field": "loc", "title": "Site Location"}, "y": {"type": "quantitative", "field": "precision_1", "title": "Precision of prediction of weeks with sap flow"}}}, {"data": {"url": "http://localhost:17017/0b413c603de6abb7ee2cbb78f2cf6ff0.json"}, "mark": {"type": "rule", "color": "red", "strokeDash": [10, 10]}, "encoding": {"y": {"type": "quantitative", "field": "prec_1"}}}], "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"data": {"url": "http://localhost:19673/7f7f1adf35eab0a69b74a555c8fa13a2.json"}, "mark": "boxplot", "encoding": {"x": {"type": "nominal", "field": "loc", "title": "Site Location"}, "y": {"type": "quantitative", "field": "precision_1", "title": "Precision of prediction of weeks with sap flow"}}}, {"data": {"url": "http://localhost:19673/0b413c603de6abb7ee2cbb78f2cf6ff0.json"}, "mark": {"type": "rule", "color": "red", "strokeDash": [10, 10]}, "encoding": {"y": {"type": "quantitative", "field": "prec_1"}}}], "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
 </script>
 </div>
 
@@ -15470,7 +15471,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">prec_0_plt</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
@@ -15489,18 +15490,18 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-00092f6842914833b3767e637f8372d8"></div>
+<div id="altair-viz-0b083e997ac44c8e927f102825a58459"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-00092f6842914833b3767e637f8372d8") {
-      outputDiv = document.getElementById("altair-viz-00092f6842914833b3767e637f8372d8");
+    if (outputDiv.id !== "altair-viz-0b083e997ac44c8e927f102825a58459") {
+      outputDiv = document.getElementById("altair-viz-0b083e997ac44c8e927f102825a58459");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -15542,7 +15543,7 @@ $$<p><em>Note that in the subsequent tables, $S$ is used to denote the output of
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"data": {"url": "http://localhost:17017/7f7f1adf35eab0a69b74a555c8fa13a2.json"}, "mark": "boxplot", "encoding": {"x": {"type": "nominal", "field": "loc", "title": "Site Location"}, "y": {"type": "quantitative", "field": "precision_0", "title": "Precision of prediction of weeks without sap flow"}}}, {"data": {"url": "http://localhost:17017/0b413c603de6abb7ee2cbb78f2cf6ff0.json"}, "mark": {"type": "rule", "color": "red", "strokeDash": [10, 10]}, "encoding": {"y": {"type": "quantitative", "field": "prec_0"}}}], "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "layer": [{"data": {"url": "http://localhost:19673/7f7f1adf35eab0a69b74a555c8fa13a2.json"}, "mark": "boxplot", "encoding": {"x": {"type": "nominal", "field": "loc", "title": "Site Location"}, "y": {"type": "quantitative", "field": "precision_0", "title": "Precision of prediction of weeks without sap flow"}}}, {"data": {"url": "http://localhost:19673/0b413c603de6abb7ee2cbb78f2cf6ff0.json"}, "mark": {"type": "rule", "color": "red", "strokeDash": [10, 10]}, "encoding": {"y": {"type": "quantitative", "field": "prec_0"}}}], "width": 500, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
 </script>
 </div>
 
@@ -15567,7 +15568,7 @@ $$ \beta_0 = -5.09 \\
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">log_regs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -15601,7 +15602,7 @@ $$ \beta_0 = -5.09 \\
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">LR_table</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
@@ -15620,7 +15621,7 @@ $$ \beta_0 = -5.09 \\
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Add columns to count number of true positives, false positives, false negatives, and true negatives</span>
@@ -15646,7 +15647,7 @@ $$ \beta_0 = -5.09 \\
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate summary of performance of Houle et al., 2015 model in terms of precision of prediction for weeks with sap flow (`precision_1`) </span>
@@ -15668,7 +15669,7 @@ $$ \beta_0 = -5.09 \\
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Generate plots showing prediction precision by site (red lines for comparison to precision reported by Houle et al., 2015</span>
@@ -15737,7 +15738,7 @@ $$ \beta_0 = -5.09 \\
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">prec_1_plt_lr</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
@@ -15756,18 +15757,18 @@ $$ \beta_0 = -5.09 \\
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-1d178f6cfcc148128e47d9144ed6815f"></div>
+<div id="altair-viz-24b7bb4cb8d44801b532a7277563cc52"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-1d178f6cfcc148128e47d9144ed6815f") {
-      outputDiv = document.getElementById("altair-viz-1d178f6cfcc148128e47d9144ed6815f");
+    if (outputDiv.id !== "altair-viz-24b7bb4cb8d44801b532a7277563cc52") {
+      outputDiv = document.getElementById("altair-viz-24b7bb4cb8d44801b532a7277563cc52");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -15809,7 +15810,7 @@ $$ \beta_0 = -5.09 \\
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"url": "http://localhost:17017/51920f64e33558c6cda6d8e09341e9f0.json"}, "mark": "boxplot", "encoding": {"color": {"type": "nominal", "field": "model", "title": "Model"}, "column": {"type": "nominal", "field": "site", "title": "Site"}, "x": {"type": "nominal", "field": "model", "title": "Model"}, "y": {"type": "quantitative", "field": "prec_model", "title": "Precision of prediction of weeks with sap flow"}}, "width": 100, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"url": "http://localhost:19673/51920f64e33558c6cda6d8e09341e9f0.json"}, "mark": "boxplot", "encoding": {"color": {"type": "nominal", "field": "model", "title": "Model"}, "column": {"type": "nominal", "field": "site", "title": "Site"}, "x": {"type": "nominal", "field": "model", "title": "Model"}, "y": {"type": "quantitative", "field": "prec_model", "title": "Precision of prediction of weeks with sap flow"}}, "width": 100, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
 </script>
 </div>
 
@@ -15822,7 +15823,7 @@ $$ \beta_0 = -5.09 \\
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">prec_0_plt_lr</span><span class="o">.</span><span class="n">properties</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
@@ -15841,18 +15842,18 @@ $$ \beta_0 = -5.09 \\
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 
 
 
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
 
-<div id="altair-viz-75702fcae7b84df3865a6191e2e844c9"></div>
+<div id="altair-viz-8bdbcda57fd94061b54c770e34d3ae6e"></div>
 <script type="text/javascript">
   (function(spec, embedOpt){
     let outputDiv = document.currentScript.previousElementSibling;
-    if (outputDiv.id !== "altair-viz-75702fcae7b84df3865a6191e2e844c9") {
-      outputDiv = document.getElementById("altair-viz-75702fcae7b84df3865a6191e2e844c9");
+    if (outputDiv.id !== "altair-viz-8bdbcda57fd94061b54c770e34d3ae6e") {
+      outputDiv = document.getElementById("altair-viz-8bdbcda57fd94061b54c770e34d3ae6e");
     }
     const paths = {
       "vega": "https://cdn.jsdelivr.net/npm//vega@5?noext",
@@ -15894,7 +15895,7 @@ $$ \beta_0 = -5.09 \\
         .catch(showError)
         .then(() => displayChart(vegaEmbed));
     }
-  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"url": "http://localhost:17017/b697b6c536ab9f56c27d20476606da0f.json"}, "mark": "boxplot", "encoding": {"color": {"type": "nominal", "field": "model", "title": "Model"}, "column": {"type": "nominal", "field": "site", "title": "Site"}, "x": {"type": "nominal", "field": "model", "title": "Model"}, "y": {"type": "quantitative", "field": "prec_model", "title": "Precision of prediction of weeks with no sap flow"}}, "width": 100, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
+  })({"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"url": "http://localhost:19673/b697b6c536ab9f56c27d20476606da0f.json"}, "mark": "boxplot", "encoding": {"color": {"type": "nominal", "field": "model", "title": "Model"}, "column": {"type": "nominal", "field": "site", "title": "Site"}, "x": {"type": "nominal", "field": "model", "title": "Model"}, "y": {"type": "quantitative", "field": "prec_model", "title": "Precision of prediction of weeks with no sap flow"}}, "width": 100, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json"}, {"mode": "vega-lite"});
 </script>
 </div>
 
@@ -15918,7 +15919,7 @@ $$ \beta_0 = -5.09 \\
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Houle on Stinson Data&quot;</span><span class="p">,</span> <span class="s2">&quot;Site Specific on Stinson Data&quot;</span><span class="p">,</span> <span class="s2">&quot;Houle Original&quot;</span><span class="p">]</span>
@@ -15967,7 +15968,7 @@ $$ \beta_0 = -5.09 \\
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">overall_prec</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -15986,7 +15987,7 @@ $$ \beta_0 = -5.09 \\
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
 
 
 
