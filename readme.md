@@ -10,10 +10,10 @@ affecting the production of maple syrup. As more and more data are
 collected in these areas, the application of data science techniques
 provides value in organizing and visualizing the data as well as in
 inference and prediction tasks. This repository draws together sap
-production data made available by Stinson et al. (2019), publicly
-available weather data from the US National Oceanic and Atmospheric
-Administration weather stations, and a prediction model proposed by
-Houle et al. (2015).
+production data made available by Stinson et al. ([2019](#ref-stinson)),
+publicly available weather data from the US National Oceanic and
+Atmospheric Administration weather stations, and a prediction model
+proposed by Houle et al. ([2015](#ref-houle)).
 
 ## Jump to highlights
 
@@ -26,18 +26,19 @@ Houle et al. (2015).
 This repository has been created with three primary purposes:
 
 1.  Apply the weekly sap prediction model proposed by Houle et al.
-    (2015) to data presented in Stinson et al. (2019) to see if the
-    model produced predictions of similar precision to that reported by
-    Houle et al. (2015) on the original data set.*Note that the model
+    ([2015](#ref-houle)) to data presented in Stinson et al.
+    ([2019](#ref-stinson)) to see if the model produced predictions of
+    similar precision to that reported by Houle et al.
+    ([2015](#ref-houle)) on the original data set.*Note that the model
     referred to here is a logistic regression model predicting ‘yes’ or
     ‘no’ in response the question ‘will sap be produced?’ in a given
     week.*
 2.  Develop my own skill in working with diverse data sets, organizing
     data from multiple sources, and creating analysis pipelines.
 3.  Create a model to predict the volume of sap produced in a given week
-    the data from Stinson et al. (2019). *Note that this model would
-    produce a numeric prediction in response to the question ‘how much
-    sap will be produced?’ in a given week.*
+    the data from Stinson et al. ([2019](#ref-stinson)). *Note that this
+    model would produce a numeric prediction in response to the question
+    ‘how much sap will be produced?’ in a given week.*
 
 Significant work has been completed to date related to the first two
 purposes and work related to the third is anticipated in the near
@@ -54,17 +55,17 @@ This repository consists of:
 
 ### Pipeline Overview
 
-Sap flow data provided by Stinson et al. (2019) for 6 measurement
-locations (‘Sites’) is downloaded from the USGS ScienceBase-Catelogue.
-These data are then normalized into a series of smaller tables in the
-style of a relational database (see entity relationship diagram below).
-Central to the overall analysis is pairing the sap flow data with local
-weather data. To do so, a NOAA weather station nearby each data
-collection site has been manually identified. Pairing these weather
-stations with the available period of measurements for the nearby Sites
-(extracted from the normalized sap flow data), historical weather data
-from the selected weather stations are downloaded for the appropriate
-periods.
+Sap flow data provided by Stinson et al. ([2019](#ref-stinson)) for 6
+measurement locations (‘Sites’) is downloaded from the USGS
+ScienceBase-Catelogue. These data are then normalized into a series of
+smaller tables in the style of a relational database (see entity
+relationship diagram below). Central to the overall analysis is pairing
+the sap flow data with local weather data. To do so, a NOAA weather
+station nearby each data collection site has been manually identified.
+Pairing these weather stations with the available period of measurements
+for the nearby Sites (extracted from the normalized sap flow data),
+historical weather data from the selected weather stations are
+downloaded for the appropriate periods.
 
 ![Chart showing normalized data table
 organization.](documentation/img/norm_tables.svg) *Entity-Relationship
@@ -76,8 +77,8 @@ Freeze-Thaw Cycles (frthw), weekly sap flow, and weekly sugar. These
 features are calculated are from the previously noted tables.
 
 Using the tables described above, the prediction model proposed by Houle
-et al. (2015) is tested on data from the Sites investigated by Stinson
-et al. (2019). A [Jupyter
+et al. ([2015](#ref-houle)) is tested on data from the Sites
+investigated by Stinson et al. ([2019](#ref-stinson)). A [Jupyter
 Notebook](notebooks/houle_analysis_comparison.ipynb) is used to perform
 this analysis and include annotations on each of the key steps.
 
@@ -116,9 +117,9 @@ python src/master.py
   - The Jupyter Notebook
     [houle\_analysis\_comparison.ipynb](notebooks/houle_analysis_comparison.ipynb)
     located in the documentation directory can then be run to explore
-    the analysis of the model by Houle et al. (2015) using the data from
-    Stinson et al. (2019). An .html version of this notebook can be
-    viewed at [this
+    the analysis of the model by Houle et al. ([2015](#ref-houle)) using
+    the data from Stinson et al. ([2019](#ref-stinson)). An .html
+    version of this notebook can be viewed at [this
     link](https://spentelow.github.io/sapflow/notebooks/houle_analysis_comparison.html).
 
 ## References
@@ -131,6 +132,7 @@ Houle, Daniel, Alain Paquette, Benoı̂t Côté, Travis Logan, Hugues Power,
 Isabelle Charron, and Louis Duchesne. 2015. “Impacts of Climate Change
 on the Timing of the Production Season of Maple Syrup in Eastern
 Canada.” *PLoS One* 10 (12): e0144844.
+<https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0144844>.
 
 </div>
 
@@ -138,7 +140,7 @@ Canada.” *PLoS One* 10 (12): e0144844.
 
 National Centers for Environmental Information: National Oceanic and
 Atmospheric Administration. n.d. “Integrated Surface Hourly Data Base.”
-<ftp://ftp.ncdc.noaa.gov/pub/data/noaa/>. Accessed March 28, 2021.
+Accessed March 28, 2021. <ftp://ftp.ncdc.noaa.gov/pub/data/noaa/>.
 
 </div>
 
@@ -146,7 +148,7 @@ Atmospheric Administration. n.d. “Integrated Surface Hourly Data Base.”
 
 Stinson, Kristina, Joshua Rapp, Selena Ahmed, David Lutz, Ryan Huish,
 Boris Dufour, and Toni Lyn Morelli. 2019. “Sap Quantity at Study Sites
-in the Northeast.”
+in the Northeast.” <https://doi.org/10.5066/P9H65YCC>.
 
 </div>
 
