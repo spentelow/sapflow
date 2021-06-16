@@ -29,16 +29,20 @@ This repository has been created with three primary purposes:
     ([2015](#ref-houle)) to data presented in Stinson et al.
     ([2019](#ref-stinson)) to see if the model produced predictions of
     similar precision to that reported by Houle et al.
-    ([2015](#ref-houle)) on the original data set.*Note that the model
-    referred to here is a logistic regression model predicting ‘yes’ or
-    ‘no’ in response the question ‘will sap be produced?’ in a given
-    week.*
+    ([2015](#ref-houle)) on the original data set.
+
+> *Note that the model referred to here is a logistic regression model
+> predicting ‘yes’ or ‘no’ in response the question ‘will sap be
+> produced?’ in a given week.*
+
 2.  Develop my own skill in working with diverse data sets, organizing
     data from multiple sources, and creating analysis pipelines.
+
 3.  Create a model to predict the volume of sap produced in a given week
-    the data from Stinson et al. ([2019](#ref-stinson)). *Note that this
-    model would produce a numeric prediction in response to the question
-    ‘how much sap will be produced?’ in a given week.*
+    the data from Stinson et al. ([2019](#ref-stinson)).
+
+> *Note that this model would produce a numeric prediction in response
+> to the question ‘how much sap will be produced?’ in a given week.*
 
 Significant work has been completed to date related to the first two
 purposes and work related to the third is anticipated in the near
@@ -48,10 +52,14 @@ future.
 
 This repository consists of:
 
-1.  Scripts to download and clean;
-2.  Scripts to create a series of database-like normalized tables; and
-3.  An interactive coding notebook that walks through the most
-    significant analyses.
+1.  Scripts to download and clean data
+2.  Scripts to create a series of database-like normalized tables
+3.  Two interactive coding notebooks:
+    1.  [Provide plots to help visualize the
+        data](https://spentelow.github.io/sapflow/notebooks/data_vis.html)
+    2.  [Includes both explanations and the code required to understand
+        and reproduce the analyses conducted to
+        date.](https://spentelow.github.io/sapflow/notebooks/houle_analysis_comparison.html)
 
 ### Pipeline Overview
 
