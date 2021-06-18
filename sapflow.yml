@@ -1,0 +1,15 @@
+name: sapflow
+dependencies:
+  - altair >= 4.1
+  - numpy >= 1.20.1
+  - pandas >= 1.2.3
+  - scikit-learn >= 0.24.1
+  - docopt >= 0.6.2
+  - pip>=20
+  - vega_datasets
+  - ipykernel
+  - seaborn
+  - plotly
+  - pip:
+    - sciencebasepy >= 1.6.9
+    - altair_data_server >= 0.4.1
