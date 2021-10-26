@@ -4,7 +4,7 @@
 # About
 
 [Maple syrup](https://en.wikipedia.org/wiki/Maple_syrup) is the most
-delicious substance in the world. There is a large and growing body of
+delicious of all syrups. There is a large and growing body of
 research related to the biological, chemical, and climatic factors
 affecting the production of maple syrup. As more and more data are
 collected in these areas, the application of data science techniques
